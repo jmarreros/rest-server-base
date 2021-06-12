@@ -65,13 +65,21 @@ const usuariosPost = async (req, res = response) => {
 const usuariosDelete = async (req, res = response) => {
     const { id } = req.params;
 
+    const uid = req.uid;
+
+    // console.log("Desde el controlador: ", uid);
+
     // Borrado físicamente
     // const usuario = await Usuario.findByIdAndDelete(id);
     // res.json(usuario);
 
     // Cambiando el estado
     const usuario = await Usuario.findByIdAndUpdate(id, {estado:false});
+    // const usuarioAutenticado = req.usuario;
+
+    // res.json({usuario, uid});
     res.json(usuario);
+
 }
 
 const usuariosPatch = (req, res = response) => {
